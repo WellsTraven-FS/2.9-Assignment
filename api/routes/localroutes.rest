@@ -1,16 +1,15 @@
 GET http://localhost:2000/bikes
 
 ###
-GET http://localhost:2000/bikes/63c9d79d5d70c9f05d5b2aff
-
+GET http://localhost:2000/bikes/63c9d77d332b2bd94700b3bf
 ###
 POST http://localhost:2000/bikes
 Content-Type: application/json
 
 {
-    "brand" : "Ebike",
-    "speed" : "Electric",
-    "color" : "Gun Metal"
+    "brand" : "Heft",
+    "speed" : "20",
+    "color" : "Galaic Purple"
 }
 
 ###
