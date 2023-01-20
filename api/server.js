@@ -18,7 +18,12 @@ db.once("open", () => console.log("Database Connection Established"));
 
 const bikeRouter = require("./routes/bikes");
 app.use(express.json());
-app.use("/bikes", bikeRouter);
+app.use("/api/v1/bikes", bikeRouter);
+
+app.use(express.static(path.join(__dirname, "../reactjs/build")));
+app.get("/*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../reactjs/build", "index.html"));
+});
 
 app.listen(PORT, () => {
     console.log(`Running on server ${PORT}`);
