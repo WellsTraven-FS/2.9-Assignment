@@ -8,9 +8,9 @@ POST http://localhost:2000/bikes
 Content-Type: application/json
 
 {
-    "brand" : "Trek",
-    "speed" : "15",
-    "color" : "Black"
+    "brand" : "Ebike",
+    "speed" : "Electric",
+    "color" : "Gun Metal"
 }
 
 ###
@@ -24,4 +24,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:2000/bikes/63c9d79d5d70c9f05d5b2aff
+DELETE http://localhost:2000/bikes/63ca3342645582a23b940c7b

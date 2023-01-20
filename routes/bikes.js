@@ -28,8 +28,6 @@ router.get("/", async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-
-    res.send("All Bikes");
 });
 
 // ------ GET ONE ROUTE ------ //
@@ -69,7 +67,6 @@ router.patch("/:id", getBike, async (req, res) => {
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
-    res.send(`Bike ID: ${req.params.id}`);
 });
 
 // ----- DELETE ROUTE ------ //
