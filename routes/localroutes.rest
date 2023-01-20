@@ -1,0 +1,27 @@
+GET http://localhost:2000/bikes
+
+###
+GET http://localhost:2000/bikes/63c9d79d5d70c9f05d5b2aff
+
+###
+POST http://localhost:2000/bikes
+Content-Type: application/json
+
+{
+    "brand" : "Trek",
+    "speed" : "15",
+    "color" : "Black"
+}
+
+###
+PATCH http://localhost:2000/bikes/63c9d77d332b2bd94700b3bf
+Content-Type: application/json
+
+{
+    "brand" : "BMX NEW",
+    "speed" : "1",
+    "color" : "Rusted Red NEW"
+}
+
+###
+DELETE http://localhost:2000/bikes/63c9d79d5d70c9f05d5b2aff
