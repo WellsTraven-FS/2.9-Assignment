@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
 
+import bikeImage2 from "../images/bikeImage2.jpeg";
+
 function Dashboard() {
     const [bikes, setBikes] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -70,8 +72,12 @@ function Dashboard() {
     };
     return (
         <div className="App">
-            <header className="App-header">
-                <h1>Bike Dashboard</h1>
+            <header style={style.header}>
+                <h1 style={style.headerH1}>Bike Shop</h1>
+            </header>
+            <main className="App-header">
+                <img src={bikeImage2} alt="" />
+                <h1>Dashboard</h1>
                 <Link to="/">Home</Link>
                 <ul>
                     {bikes &&
@@ -114,9 +120,23 @@ function Dashboard() {
                     </label>
                     <input type="submit" value="submit" />
                 </form>
-            </header>
+            </main>
         </div>
     );
 }
 
 export default Dashboard;
+
+const style = {
+    header: {
+        height: "100px",
+        textAlign: "center",
+        backgroundColor: "maroon",
+    },
+    h1: {
+        color: "red",
+    },
+    headerH1: {
+        paddingTop: "20px",
+    },
+};

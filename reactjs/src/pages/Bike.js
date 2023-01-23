@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import "../App.css";
+import bikeImage3 from "../images/bikeImage3.jpeg";
 
 function Bike() {
     const [bikes, setBikes] = useState(null);
@@ -96,7 +97,11 @@ function Bike() {
     };
     return (
         <div className="App">
-            <header className="App-header">
+            <header style={style.header}>
+                <h1 style={style.headerH1}>Bike Shop</h1>
+            </header>
+            <main className="App-header">
+                <img src={bikeImage3} about="" style={style.img} />
                 <h1>Bike Profile</h1>
                 <h5>{values && values.brand}</h5>
                 <p>{values && values.speed}</p>
@@ -135,9 +140,33 @@ function Bike() {
                     </label>
                     <input type="submit" value="submit" />
                 </form>
-            </header>
+            </main>
         </div>
     );
 }
 
 export default Bike;
+
+const style = {
+    header: {
+        height: "100px",
+        textAlign: "center",
+        backgroundColor: "maroon",
+    },
+    h1: {
+        paddingTop: "20px",
+    },
+    headerH1: {
+        paddingTop: "20px",
+    },
+    font: {
+        color: "red",
+    },
+    img: {
+        width: "200px",
+        height: "200px",
+        objectFit: "cover",
+        objectPosition: "40%",
+        borderRadius: "8rem",
+    },
+};
