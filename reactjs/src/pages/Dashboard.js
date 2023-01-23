@@ -118,9 +118,18 @@ function Dashboard() {
                             onChange={handleInputChange}
                         />
                     </label>
-                    <input type="submit" value="submit" />
+                    <input type="submit" value="Create" />
                 </form>
             </main>
+            <footer>
+                <p>
+                    Copyright &copy; 2023-
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>{" "}
+                    Traven Wells
+                </p>
+            </footer>
         </div>
     );
 }

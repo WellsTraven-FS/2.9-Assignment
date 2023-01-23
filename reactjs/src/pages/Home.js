@@ -3,7 +3,7 @@ import "../App.css";
 import bike from "../images/bikeImage.jpeg";
 function Home() {
     return (
-        <div>
+        <div className="App">
             <header style={style.header}>
                 <h1 style={style.h1}>Bike Shop</h1>
             </header>
@@ -12,6 +12,15 @@ function Home() {
                 <h1 style={style.font}>Home</h1>
                 <Link to="/dashboard">Dashboard</Link>
             </main>
+            <footer>
+                <p>
+                    Copyright &copy; 2023-
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>{" "}
+                    Traven Wells
+                </p>
+            </footer>
         </div>
     );
 }
