@@ -25,13 +25,13 @@ function App() {
     };
     return (
         <div>
-            <div>
+            {/* <div>
                 {currentUser === false ? (
                     <h2>Logged In</h2>
                 ) : (
                     <h2>Logged Out</h2>
                 )}
-            </div>
+            </div> */}
             <section>
                 <Routes>
                     <Route path="/login" exact element={<Login />} />
