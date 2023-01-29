@@ -31,7 +31,7 @@ function Dashboard() {
             },
             (error) => {
                 console.log("Secured Page Error", error.response);
-                if (error.response && error.response.status === 403)
+                if (error.response && error.response.status == 403)
                     AuthService.logout();
                 navigate("/login");
             }
