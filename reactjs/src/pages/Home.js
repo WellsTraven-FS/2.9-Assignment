@@ -11,6 +11,8 @@ function Home() {
                 <img src={bike} alt="" />
                 <h1 style={style.font}>Home</h1>
                 <Link to="/dashboard">Dashboard</Link>
+                <Link to="/login">Login</Link>
+                <Link to="/signup">Sign Up</Link>
             </main>
             <footer>
                 <p>
