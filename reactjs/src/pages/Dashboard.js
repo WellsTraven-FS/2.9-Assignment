@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import AuthService from "../services/auth.service";
+import BikesService from "../services/bike.service";
 import "../App.css";
 
 import bikeImage2 from "../images/bikeImage2.jpeg";
@@ -8,12 +11,13 @@ function Dashboard() {
     const [bikes, setBikes] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-
     const [values, setValues] = useState({
         brand: "",
         speed: "",
         color: "",
     });
+
+    const navigate = useNavigate();
 
     const API_BASE =
         process.env.NODE_ENV === "development"
@@ -21,27 +25,40 @@ function Dashboard() {
             : process.env.REACT_APP_BASE_URL;
     let ignore = false;
     useEffect(() => {
-        if (!ignore) {
-            getBikes();
-        }
-        return () => {
-            ignore = true;
-        };
+        BikesService.getAllPrivateBikes().then(
+            (response) => {
+                setBikes(response.data);
+            },
+            (error) => {
+                console.log("Secured Page Error", error.response);
+                if (error.response && error.response.status === 403)
+                    AuthService.logout();
+                navigate("/login");
+            }
+        );
     }, []);
-    const getBikes = async () => {
-        try {
-            await fetch(`${API_BASE}/bikes`)
-                .then((res) => res.json())
-                .then((data) => {
-                    console.log({ data });
-                    setBikes(data);
-                });
-        } catch (error) {
-            setError(error.message || "Unexpected Error");
-        } finally {
-            setLoading(false);
-        }
-    };
+    // useEffect(() => {
+    //     if (!ignore) {
+    //         getBikes();
+    //     }
+    //     return () => {
+    //         ignore = true;
+    //     };
+    // }, []);
+    // const getBikes = async () => {
+    //     try {
+    //         await fetch(`${API_BASE}/bikes`)
+    //             .then((res) => res.json())
+    //             .then((data) => {
+    //                 console.log({ data });
+    //                 setBikes(data);
+    //             });
+    //     } catch (error) {
+    //         setError(error.message || "Unexpected Error");
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // };
     const createBike = async () => {
         try {
             await fetch(`${API_BASE}/bikes`, {
@@ -50,9 +67,8 @@ function Dashboard() {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(values),
-            })
-                .then((res) => res.json())
-                .then(() => getBikes());
+            }).then((res) => res.json());
+            // .then(() => getBikes());
         } catch (error) {
             setError(error.message || "Unexpected Error");
         } finally {
